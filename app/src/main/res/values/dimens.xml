@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_frame_height">80dp</dimen>
+    <dimen name="list_margins">16dp</dimen>
+    <dimen name="title_size">30sp</dimen>
+    <dimen name="body_size">20sp</dimen>
+</resources>
