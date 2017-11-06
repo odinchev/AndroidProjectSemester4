@@ -3,8 +3,10 @@ package com.example.examples.androidprojectsemester4;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,12 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // toolbar
+       // Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
+       // setSupportActionBar(mytoolbar);
+       // ActionBar ab=getSupportActionBar();
+       // ab.setDisplayHomeAsUpEnabled(true);
+        // mqtt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscriber);
         mLivingRoom = (TextView) findViewById(R.id.living_room);
