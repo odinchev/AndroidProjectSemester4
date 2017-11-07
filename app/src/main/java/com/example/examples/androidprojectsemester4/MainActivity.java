@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
             @Override
             public void handleMessage(Message msg) {
                String temperature= msg.obj.toString();
+                int graphtemperature = Integer.parseInt( msg.obj.toString());
                 mLivingRoom.setText(temperature.substring(0,4));
             }
         };
