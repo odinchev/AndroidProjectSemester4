@@ -14,9 +14,9 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 public class MqttConnector
 {
     private final static String BROKER_URL =
-            "tcp://m20.cloudmqtt.com:11522";
-    private static final String USERNAME = "Guest";
-    private static final String PASSWORD = "12345";
+            "tcp://m23.cloudmqtt.com:11522";
+    private static final String USERNAME = "gvbwareu";
+    private static final String PASSWORD = "Rv8MWKAbEgVK";;
     private MqttConnectOptions mOptions;
     private MqttClient mClient;
     private String mTopic;

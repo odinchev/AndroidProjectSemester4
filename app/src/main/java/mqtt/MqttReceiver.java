@@ -21,7 +21,7 @@ public class MqttReceiver extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         try {
             MqttConnector client = new MqttConnector("receiver");
-            client.setTopic("/home/living-room/temperature");
+            client.setTopic("sensor");
             client.connect();
             client.setCallback(mCaller);
             client.subscribe();

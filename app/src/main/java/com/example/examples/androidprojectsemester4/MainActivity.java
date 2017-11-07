@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                mLivingRoom.setText(msg.obj.toString());
+               String temperature= msg.obj.toString();
+                mLivingRoom.setText(temperature.substring(0,4));
             }
         };
     }
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     {
         Message message = mHandler.obtainMessage(0, mqttMessage);
         message.sendToTarget();
+        mLivingRoom = (TextView) findViewById(R.id.living_room);
+
     }
     @Override
     public void connectionLost(Throwable throwable) {
