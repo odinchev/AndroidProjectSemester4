@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import mqtt.MqttReceiver;
 public class MainActivity extends AppCompatActivity implements MqttCallback
 {
     private TextView mLivingRoom;
+    private ProgressBar SpinView;
     private Handler mHandler;
 
     @Override
@@ -32,12 +35,14 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscriber);
         mLivingRoom = (TextView) findViewById(R.id.living_room);
+        SpinView=(ProgressBar)findViewById(R.id.progressBar)
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
                String temperature= msg.obj.toString();
                 int graphtemperature = Integer.parseInt( msg.obj.toString());
                 mLivingRoom.setText(temperature.substring(0,4));
+                SpinView.setProgress(graphtemperature);
             }
         };
     }
