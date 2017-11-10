@@ -35,14 +35,18 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscriber);
         mLivingRoom = (TextView) findViewById(R.id.living_room);
-        SpinView=(ProgressBar)findViewById(R.id.progressBar)
+        SpinView=(ProgressBar)findViewById(R.id.progressBar);
+        SpinView.setMax(100);
+
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
-               String temperature= msg.obj.toString();
-                int graphtemperature = Integer.parseInt( msg.obj.toString());
-                mLivingRoom.setText(temperature.substring(0,4));
-                SpinView.setProgress(graphtemperature);
+                if(msg.toString().length()>4) {
+                    String temperature = msg.obj.toString().substring(0, 4);
+                    int graphTemperature = Integer.parseInt(temperature.substring(0,2));
+                    mLivingRoom.setText(temperature);
+                    SpinView.setProgress(graphTemperature,false);
+                }
             }
         };
     }
