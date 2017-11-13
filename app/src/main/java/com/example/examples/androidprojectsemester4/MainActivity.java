@@ -1,5 +1,6 @@
 package com.example.examples.androidprojectsemester4;
 
+import android.media.Image;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -7,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,7 +24,10 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
 {
     private TextView mLivingRoom;
     private ProgressBar SpinView;
+    private ImageView view;
     private Handler mHandler;
+    private int level;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +41,19 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         setContentView(R.layout.activity_subscriber);
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
+          view=(ImageView) findViewById(R.id.imageView);
         SpinView.setMax(100);
+
 
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                if(msg.toString().length()>4) {
+                if(msg.toString().length()>=4) {
                     String temperature = msg.obj.toString().substring(0, 4);
                     int graphTemperature = Integer.parseInt(temperature.substring(0,2));
                     mLivingRoom.setText(temperature);
-                    SpinView.setProgress(graphTemperature,false);
+                    SpinView.setProgress(graphTemperature,true);
+                    view.getBackground().setLevel(graphTemperature*100);
                 }
             }
         };
