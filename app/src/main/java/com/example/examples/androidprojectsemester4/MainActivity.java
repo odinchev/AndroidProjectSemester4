@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     private ImageView view;
     private Handler mHandler;
     private int level;
-
+private TextView humidityview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         ActionBar ab=getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         // mqtt
-
+humidityview = (TextView)findViewById(R.id.humidityview);
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
           view=(ImageView) findViewById(R.id.imageView);
@@ -73,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         Message message = mHandler.obtainMessage(0, mqttMessage);
         message.sendToTarget();
         mLivingRoom = (TextView) findViewById(R.id.living_room);
+
+    }
+    public void messageArrived2(String topic2, MqttMessage mqttMessage2)
+    {
+        Message message2 = mHandler.obtainMessage(0, mqttMessage2);
+        message2.sendToTarget();
+      humidityview = (TextView) findViewById(R.id.humidityview);
 
     }
     @Override

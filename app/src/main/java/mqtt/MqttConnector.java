@@ -20,7 +20,7 @@ public class MqttConnector
     private MqttConnectOptions mOptions;
     private MqttClient mClient;
     private String mTopic;
-
+private String mTopic2;
     public MqttConnector(String clientId) throws MqttException {
         mOptions = new MqttConnectOptions();
         mOptions.setCleanSession(true);
@@ -45,6 +45,9 @@ public class MqttConnector
     public void setTopic(String topic) {
         mTopic = topic;
     }
+    public void setTopic2(String topic) {
+        mTopic2 = topic;
+    }
     public void setCallback(MqttCallback callback) {
         mClient.setCallback(callback);
     }
@@ -56,9 +59,16 @@ public class MqttConnector
         mqttMessage.setQos(0);
         mClient.publish(mTopic, mqttMessage);
     }
+    public void publish2(byte[] message) throws MqttException {
+        MqttMessage mqttMessage2 = new MqttMessage();
+        mqttMessage2.setPayload(message);
+        mqttMessage2.setQos(0);
+        mClient.publish(mTopic2, mqttMessage2);
+    }
 
     public void subscribe() throws MqttException {
         mClient.subscribe(mTopic);
+        mClient.subscribe(mTopic2);
     }
 
 }

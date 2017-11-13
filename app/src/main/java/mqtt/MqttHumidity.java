@@ -22,16 +22,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
         @Override
         protected Void doInBackground(Void... params) {
-            try {
-                MqttConnector client = new MqttConnector("receiver");
-                client.setTopic("sensor");
-                client.connect();
-                client.setCallback(Caller);
-                client.subscribe();
-            }
-            catch (MqttException e) {
-                // manage connection errors
-            }
+
             // humidity topic
             try {
                 MqttConnector client = new MqttConnector("receiver");
