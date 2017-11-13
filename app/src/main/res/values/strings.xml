@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">AndroidProjectSemester4</string>
 
-        <string name="view2">view2</string>
-        <string name="NavigationWindow1">NavigationWindow1</string>
-        <string name="NavigationWindow2">NavigationWindow2</string>
-        <string name="NavigationWindow3">NavigationWindow3</string>
-
+    <string name="view2">view2</string>
+    <string name="NavigationWindow1">NavigationWindow1</string>
+    <string name="NavigationWindow2">NavigationWindow2</string>
+    <string name="NavigationWindow3">NavigationWindow3</string>
 
 
 </resources>
