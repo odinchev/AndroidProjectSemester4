@@ -32,13 +32,15 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // toolbar
-       // Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
-       // setSupportActionBar(mytoolbar);
-       // ActionBar ab=getSupportActionBar();
-       // ab.setDisplayHomeAsUpEnabled(true);
-        // mqtt
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_subscriber);
+        Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
+        setSupportActionBar(mytoolbar);
+        ActionBar ab=getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        // mqtt
+
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
           view=(ImageView) findViewById(R.id.imageView);
@@ -58,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
             }
         };
     }
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
     @Override
     public void messageArrived(String topic, MqttMessage mqttMessage)

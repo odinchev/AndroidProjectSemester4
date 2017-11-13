@@ -1,5 +1,6 @@
 package com.example.examples.androidprojectsemester4;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,15 +16,15 @@ public class Menu extends AppCompatActivity {
     {
 
         super.onCreate(savedInstanceState);
-        /*
+
         setContentView(R.layout.activity_menu);
         Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
         setSupportActionBar(mytoolbar);
         ActionBar ab=getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        **/
+
     }
-    /*
+
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
@@ -38,6 +39,8 @@ public class Menu extends AppCompatActivity {
                 // as a favorite...
                 Toast toast= Toast.makeText(this,"Android Toast",Toast.LENGTH_LONG);
                 toast.show();
+                Intent intent=new Intent (this,MainActivity.class);
+                startActivity(intent);
                 return true;
 
             default:
@@ -49,5 +52,5 @@ public class Menu extends AppCompatActivity {
 
 
     }
-    **/
+
 }
