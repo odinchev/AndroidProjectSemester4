@@ -18,9 +18,7 @@ public class MqttReceiver extends AsyncTask<Void, Void, Void> {
     public MqttReceiver(MainActivity caller) {
         this.mCaller = caller;
     }
-    public MqttReceiver(Humidity caller) {
-        this.Caller = caller;
-    }
+
 
     @Override
     protected Void doInBackground(Void... params) {
@@ -35,16 +33,7 @@ public class MqttReceiver extends AsyncTask<Void, Void, Void> {
             // manage connection errors
         }
         // humidity topic
-        try {
-            MqttConnector client = new MqttConnector("receiver");
-            client.setTopic("humidity");
-            client.connect();
-            client.setCallback(Caller);
-            client.subscribe();
-        }
-        catch (MqttException e) {
-            // manage connection errors
-        }
+
         return null;
     }
 

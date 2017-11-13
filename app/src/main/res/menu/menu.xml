@@ -2,10 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:title="Item"
+        android:id="@+id/view1"
+        android:icon="@drawable/fireflame"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/view2"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/yayaflame"
         android:title="@string/view2"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <!-- Settings, should always be in the overflow -->
 

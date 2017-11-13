@@ -34,13 +34,22 @@ public class Menu extends AppCompatActivity {
 
         switch (item.getItemId())
         {
+            case R.id.view1:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                Toast humidity= Toast.makeText(this,"Android Toast",Toast.LENGTH_LONG);
+                humidity.show();
+                Intent humidityIntent=new Intent (this,Humidity.class);
+                startActivity(humidityIntent);
+                return true;
+
             case R.id.view2:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-                Toast toast= Toast.makeText(this,"Android Toast",Toast.LENGTH_LONG);
-                toast.show();
-                Intent intent=new Intent (this,MainActivity.class);
-                startActivity(intent);
+                Toast temperature= Toast.makeText(this,"Android Toast",Toast.LENGTH_LONG);
+                temperature.show();
+                Intent temperatureIntent=new Intent (this,MainActivity.class);
+                startActivity(temperatureIntent);
                 return true;
 
             default:

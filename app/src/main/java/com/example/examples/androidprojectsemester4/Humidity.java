@@ -18,6 +18,7 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import mqtt.MqttHumidity;
 import mqtt.MqttReceiver;
 
 public class Humidity extends AppCompatActivity implements MqttCallback
@@ -90,6 +91,6 @@ public class Humidity extends AppCompatActivity implements MqttCallback
     @Override
     protected void onResume() {
         super.onResume();
-        new MqttReceiver(this).execute();
+        new MqttHumidity(this).execute();
     }
 }
