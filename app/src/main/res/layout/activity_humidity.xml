@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
 
@@ -49,7 +50,7 @@
     <android.support.v7.widget.Toolbar
 
         android:id="@+id/ToolBar"
-        android:background="#c50fdcef"
+        android:background="#b0d81e"
         android:layout_width="384dp"
         android:layout_height="72dp"
         android:elevation="5dp"
@@ -65,7 +66,15 @@
         android:layout_marginTop="-7dp">
 
 
-
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Humidity"
+            android:textColor="@android:color/white"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_gravity="center"
+            />
     </android.support.v7.widget.Toolbar>
 
     <ProgressBar
@@ -81,7 +90,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:theme="@style/AppTheme.Humidity"
+        />
 
     <ImageView
         android:id="@+id/imageView"

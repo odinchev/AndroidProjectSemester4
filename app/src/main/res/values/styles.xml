@@ -1,7 +1,19 @@
 <resources>
     <color name="picton_blue">#33B5E5</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#918d8d</color>
     <style name="AppTheme"
+
         parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">#89ab20</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColor">#ffffff</item>
+
+
+    </style>
+    <style name="AppTheme.Humidity">
+        <item name="colorAccent">#09d3e6</item> <!-- Whatever color you want-->
+    </style>
+    <style name="AppTheme.Temperature">
+        <item name="colorAccent">#f22505</item> <!-- Whatever color you want-->
     </style>
 </resources>

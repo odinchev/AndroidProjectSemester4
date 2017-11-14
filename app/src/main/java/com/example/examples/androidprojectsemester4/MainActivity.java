@@ -33,11 +33,12 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     protected void onCreate(Bundle savedInstanceState) {
         // toolbar
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_subscriber);
         Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
         setSupportActionBar(mytoolbar);
+
         ActionBar ab=getSupportActionBar();
+       ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
         // mqtt
 

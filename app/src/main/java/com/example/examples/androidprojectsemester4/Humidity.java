@@ -37,7 +37,9 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         setContentView(R.layout.activity_humidity);
         Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
         setSupportActionBar(mytoolbar);
+
         ActionBar ab=getSupportActionBar();
+        ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
         view=(ImageView) findViewById(R.id.imageView);
 
