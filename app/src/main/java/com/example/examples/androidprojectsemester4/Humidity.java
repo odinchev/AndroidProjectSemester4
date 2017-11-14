@@ -1,5 +1,6 @@
 package com.example.examples.androidprojectsemester4;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -25,6 +27,7 @@ import mqtt.MqttReceiver;
 
 public class Humidity extends AppCompatActivity implements MqttCallback
 {
+    private int humiditylevel;
     private TextView mLivingRoom;
     private ProgressBar SpinView;
     private ImageView view;
@@ -61,13 +64,27 @@ public class Humidity extends AppCompatActivity implements MqttCallback
             public void handleMessage(Message msg) {
                 if(msg.toString().length()>=4) {
                     String humidity = msg.obj.toString().substring(0, 4);
-                    int humiditylevel = Integer.parseInt(humidity.substring(0,2));
+                    humiditylevel = Integer.parseInt(humidity.substring(0,2));
                     mLivingRoom.setText(humidity);
                     SpinView.setProgress(humiditylevel,true);
                     view.getBackground().setLevel(humiditylevel*100);
+                    //Notification();
                 }
             }
         };
+    }
+    public void Notification() {
+        NotificationCompat.Builder mBuilder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.raindrop)
+                        .setContentTitle("Humidity")
+                        .setContentText("Humidity is " + humiditylevel);
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);

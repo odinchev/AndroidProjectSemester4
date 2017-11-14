@@ -9,7 +9,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class Menu extends AppCompatActivity {
-
+ private Humidity humidity;
+    private MainActivity temperature;
     @Override
 
     protected void onCreate(Bundle savedInstanceState)
@@ -23,11 +24,15 @@ public class Menu extends AppCompatActivity {
         ActionBar ab=getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
+
+
     }
 
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
+
         return super.onCreateOptionsMenu(menu);
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -61,5 +66,10 @@ public class Menu extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 
 }

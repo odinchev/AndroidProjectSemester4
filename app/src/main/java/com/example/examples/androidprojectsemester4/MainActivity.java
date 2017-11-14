@@ -1,5 +1,6 @@
 package com.example.examples.androidprojectsemester4;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     private ImageView view;
     private Handler mHandler;
     private int level;
+    int graphTemperature;
+    private NotificationCompat.Builder notificationBuilder;
 
 
     @Override
@@ -55,14 +59,29 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
             public void handleMessage(Message msg) {
                 if(msg.toString().length()>=4) {
                     String temperature = msg.obj.toString().substring(0, 4);
-                    int graphTemperature = Integer.parseInt(temperature.substring(0,2));
+                     graphTemperature = Integer.parseInt(temperature.substring(0,2));
                     mLivingRoom.setText(temperature);
                     SpinView.setProgress(graphTemperature,true);
                     view.getBackground().setLevel(graphTemperature*100);
+                    //Notification();
                 }
             }
         };
     }
+    public void Notification() {
+        NotificationCompat.Builder mBuilder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.fireflame)
+                        .setContentTitle("Temperature")
+                        .setContentText("Temperature is " + graphTemperature);
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+    }
+
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
@@ -107,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         message.sendToTarget();
         mLivingRoom = (TextView) findViewById(R.id.living_room);
 
+
     }
 
     @Override
@@ -124,4 +144,24 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         super.onResume();
         new MqttReceiver(this).execute();
     }
+    protected void onPause()
+    {
+        super.onPause();
+        new Thread(new Runnable() {
+            public void run() {
+                // a potentially  time consuming task
+                Notification();
+
+            }
+        }).start();
+
+
+    }
+
+
+
+
 }
+
+
+
