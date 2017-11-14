@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     private ImageView view;
     private Handler mHandler;
     private int level;
-private TextView humidityview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ private TextView humidityview;
         ActionBar ab=getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         // mqtt
-humidityview = (TextView)findViewById(R.id.humidityview);
+
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
           view=(ImageView) findViewById(R.id.imageView);
@@ -75,13 +75,7 @@ humidityview = (TextView)findViewById(R.id.humidityview);
         mLivingRoom = (TextView) findViewById(R.id.living_room);
 
     }
-    public void messageArrived2(String topic2, MqttMessage mqttMessage2)
-    {
-        Message message2 = mHandler.obtainMessage(0, mqttMessage2);
-        message2.sendToTarget();
-      humidityview = (TextView) findViewById(R.id.humidityview);
 
-    }
     @Override
     public void connectionLost(Throwable throwable) {
         Toast.makeText(this, "Connection lost with the broker",

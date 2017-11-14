@@ -39,6 +39,8 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         setSupportActionBar(mytoolbar);
         ActionBar ab=getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+        view=(ImageView) findViewById(R.id.imageView);
+
         // mqtt
 /*
 
@@ -55,10 +57,10 @@ public class Humidity extends AppCompatActivity implements MqttCallback
             public void handleMessage(Message msg) {
                 if(msg.toString().length()>=4) {
                     String humidity = msg.obj.toString().substring(0, 4);
-                    int graphTemperature = Integer.parseInt(humidity.substring(0,2));
+                    int humiditylevel = Integer.parseInt(humidity.substring(0,2));
                     mLivingRoom.setText(humidity);
-                    SpinView.setProgress(graphTemperature,true);
-                    //view.getBackground().setLevel(graphTemperature*100);
+                    SpinView.setProgress(humiditylevel,true);
+                    view.getBackground().setLevel(humiditylevel*100);
                 }
             }
         };
