@@ -4,11 +4,11 @@
     <item
         android:title="Item"
         android:id="@+id/view1"
-        android:icon="@drawable/fireflame"
+        android:icon="@drawable/raindrop"
         app:showAsAction="always" />
     <item
         android:id="@+id/view2"
-        android:icon="@drawable/yayaflame"
+        android:icon="@drawable/fireflame"
         android:title="@string/view2"
         app:showAsAction="always" />
 
