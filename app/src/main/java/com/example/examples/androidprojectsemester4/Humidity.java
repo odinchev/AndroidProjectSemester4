@@ -68,7 +68,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
                     mLivingRoom.setText(humidity);
                     SpinView.setProgress(humiditylevel,true);
                     view.getBackground().setLevel(humiditylevel*100);
-                    //Notification();
+                    Notification();
                 }
             }
         };
@@ -145,5 +145,6 @@ public class Humidity extends AppCompatActivity implements MqttCallback
     protected void onResume() {
         super.onResume();
         new MqttHumidity(this).execute();
+        startService(new Intent(this, Starter.class));
     }
 }

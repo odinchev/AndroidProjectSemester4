@@ -2,7 +2,7 @@ package com.example.examples.androidprojectsemester4;
 
 import android.app.NotificationManager;
 import android.content.Intent;
-import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -14,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
                     mLivingRoom.setText(temperature);
                     SpinView.setProgress(graphTemperature,true);
                     view.getBackground().setLevel(graphTemperature*100);
-                    //Notification();
+                    Notification();
                 }
             }
         };
@@ -143,18 +142,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     protected void onResume() {
         super.onResume();
         new MqttReceiver(this).execute();
-    }
-    protected void onPause()
-    {
-        super.onPause();
-        new Thread(new Runnable() {
-            public void run() {
-                // a potentially  time consuming task
-                Notification();
-
-            }
-        }).start();
-
+        startService(new Intent(this, Starter.class));
 
     }
 
