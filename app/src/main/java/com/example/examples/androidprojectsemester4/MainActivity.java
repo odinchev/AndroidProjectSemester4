@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,6 +22,10 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import github.hellocsl.cursorwheel.CursorWheelLayout;
 import mqtt.MqttReceiver;
 
 public class MainActivity extends AppCompatActivity implements MqttCallback
@@ -34,17 +39,35 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     private NotificationCompat.Builder notificationBuilder;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // toolbar
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subscriber);
+        setContentView(R.layout.activity_menu);
+
+
+
+
+
         Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
         setSupportActionBar(mytoolbar);
+
+
 
         ActionBar ab=getSupportActionBar();
        ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
+//wheel
+
+
+
+        //wheel
+
+
+
         // mqtt
 
         mLivingRoom = (TextView) findViewById(R.id.living_room);
@@ -67,6 +90,13 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
             }
         };
     }
+
+
+
+
+
+
+
     public void Notification() {
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(this)
@@ -95,8 +125,8 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
                 // as a favorite...
                 Toast humidity= Toast.makeText(this,"Android Toast",Toast.LENGTH_LONG);
                 humidity.show();
-                Intent humidityIntent=new Intent (this,Humidity.class);
-                startActivity(humidityIntent);
+               Intent humidityIntent=new Intent (this,Humidity.class);
+               startActivity(humidityIntent);
                 return true;
 
             case R.id.view2:
@@ -104,8 +134,8 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
                 // as a favorite...
                 Toast temperature= Toast.makeText(this,"Android Toast",Toast.LENGTH_LONG);
                 temperature.show();
-                Intent temperatureIntent=new Intent (this,MainActivity.class);
-                startActivity(temperatureIntent);
+              Intent temperatureIntent=new Intent (this,MainActivity.class);
+               startActivity(temperatureIntent);
                 return true;
 
             default:
@@ -145,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
         startService(new Intent(this, Starter.class));
 
     }
-
 
 
 

@@ -7,8 +7,59 @@
     tools:context="com.example.examples.androidprojectsemester4.Menu">
 
 
+  <github.hellocsl.cursorwheel.CursorWheelLayout
+      android:layout_centerHorizontal="true"
+      android:id="@+id/wheel_text"
+      android:layout_width="280dip"
+      android:layout_height="280dip"
+      app:wheelCursorColor="#009688"
+      app:wheelCursorHeight="19dip"
+      app:wheelItemRotateMode="none"
+      app:wheelSelectedAngle="270"
 
-    <android.support.v7.widget.Toolbar
+      >
+    <TextView
+        android:id="@id/id_wheel_menu_center_item"
+        android:text="Text Wheel"
+        android:textColor="#009688"
+        style="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+  </github.hellocsl.cursorwheel.CursorWheelLayout>
+
+  <github.hellocsl.cursorwheel.CursorWheelLayout
+      android:layout_centerHorizontal="true"
+      android:layout_below="@+id/wheel_text"
+      android:id="@+id/wheel_image"
+      android:layout_width="280dip"
+      android:layout_height="280dip"
+      app:wheelCursorColor="#009688"
+      app:wheelCursorHeight="19dip"
+      app:wheelItemRotateMode="none"
+      app:wheelSelectedAngle="270"
+
+      tools:layout_editor_absoluteY="287dp"
+      tools:layout_editor_absoluteX="0dp"
+      tools:ignore="MissingConstraints">
+    <TextView
+        android:text="Image Wheel"
+        android:id="@id/id_wheel_menu_center_item"
+        android:textColor="#009688"
+        style="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+  </github.hellocsl.cursorwheel.CursorWheelLayout>
+
+
+
+
+
+
+  <android.support.v7.widget.Toolbar
 
         android:id="@+id/ToolBar"
         android:background="#b0d81e"
@@ -24,7 +75,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="-7dp">
+        android:layout_marginTop="-58dp">
 
 
 
