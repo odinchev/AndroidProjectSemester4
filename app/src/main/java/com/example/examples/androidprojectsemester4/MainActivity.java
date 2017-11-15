@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     protected void onCreate(Bundle savedInstanceState) {
         // toolbar
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_subscriber);
 
 
 
