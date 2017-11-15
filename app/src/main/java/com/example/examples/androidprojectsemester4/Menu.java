@@ -21,7 +21,7 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
 
 
     CursorWheelLayout wheel_text,wheel_image;
-    List<MenuItemData> lstText;
+   // List<MenuItemData> lstText;
     List<ImageData> lstImage;
 
     protected void onCreate(Bundle savedInstanceState)
@@ -30,14 +30,15 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_menu);
+/*
         Toolbar mytoolbar=(Toolbar)findViewById(R.id.ToolBar);
         setSupportActionBar(mytoolbar);
         ActionBar ab=getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-
+*/
         initViews();
         loadData();
-        wheel_text.setOnMenuSelectedListener(this);
+       // wheel_text.setOnMenuSelectedListener(this);
         wheel_image.setOnMenuSelectedListener(this);
 
 
@@ -46,20 +47,25 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
     private void initViews()
     {
         wheel_image = (CursorWheelLayout)findViewById(R.id.wheel_image);
-        wheel_text=(CursorWheelLayout)findViewById(R.id.wheel_text);
+       // wheel_text=(CursorWheelLayout)findViewById(R.id.wheel_text);
 
     }
     private void loadData(){
+        /*
         lstText = new ArrayList<>();
         for(int i=0; i<9;i++)
             lstText.add(new MenuItemData(""+i));
         lstText.add(new MenuItemData("OFF"));
         WheelTextAdapter adapter = new WheelTextAdapter(getBaseContext(),lstText);
         wheel_text.setAdapter(adapter);
-
+*/
         lstImage = new ArrayList<>();
+
+        lstImage.add(new ImageData(R.drawable.yayaflame,"test"));
+        lstImage.add(new ImageData(R.drawable.raindropblack,"test"));
         lstImage.add(new ImageData(R.drawable.fireflame,"Weather"));
         lstImage.add(new ImageData(R.drawable.raindrop,"humidity"));
+
 
         WheelImageAdapter imgAdapter = new WheelImageAdapter(getBaseContext(),lstImage);
         wheel_image.setAdapter(imgAdapter);
@@ -71,6 +77,7 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
 
 
     //init views and load data methods
+
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
 
@@ -78,6 +85,7 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
 
     }
 
+    /*
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId())
@@ -109,17 +117,43 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
 
 
     }
-
+*/
 
     @Override
     public void onItemSelected(CursorWheelLayout parent, View view, int pos) {
+        /*
         if(parent.getId()== R.id.wheel_text) {
             Toast.makeText(getBaseContext(), "Selected:" + lstText.get(pos).mTitle, Toast.LENGTH_SHORT).show();
 
             }
-        else if(parent.getId() == R.id.wheel_image) {
+
+            */
+
+        if(parent.getId() == R.id.wheel_image) {
             Toast.makeText(getBaseContext(), "Selected:" + lstImage.get(pos).imageDescription, Toast.LENGTH_SHORT).show();
 
+            if(lstImage.get(pos).imageDescription.equals("Weather"))
+            {
+
+                Intent weather = new Intent(Menu.this, MainActivity.class);
+                startActivity(weather);
+
+                //Toast.makeText(getBaseContext(), "WEATHER:" + lstImage.get(pos).imageDescription, Toast.LENGTH_SHORT).show();
+
+            }
+            if(lstImage.get(pos).imageDescription.equals("humidity"))
+            {
+
+                Intent Humidity = new Intent(Menu.this, Humidity.class);
+                startActivity(Humidity);
+
+                //Toast.makeText(getBaseContext(), "WEATHER:" + lstImage.get(pos).imageDescription, Toast.LENGTH_SHORT).show();
+
+            }
+
+
         }
+
+
     }
 }

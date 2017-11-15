@@ -6,47 +6,34 @@
     android:layout_height="match_parent"
     tools:context="com.example.examples.androidprojectsemester4.Menu">
 
-
   <github.hellocsl.cursorwheel.CursorWheelLayout
       android:layout_centerHorizontal="true"
-      android:id="@+id/wheel_text"
-      android:layout_width="280dip"
-      android:layout_height="280dip"
-      app:wheelCursorColor="#009688"
-      app:wheelCursorHeight="19dip"
-      app:wheelItemRotateMode="none"
-      app:wheelSelectedAngle="270"
 
-      >
-    <TextView
-        android:id="@id/id_wheel_menu_center_item"
-        android:text="Text Wheel"
-        android:textColor="#009688"
-        style="@style/TextAppearance.AppCompat.Large.Inverse"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-  </github.hellocsl.cursorwheel.CursorWheelLayout>
-
-  <github.hellocsl.cursorwheel.CursorWheelLayout
-      android:layout_centerHorizontal="true"
-      android:layout_below="@+id/wheel_text"
       android:id="@+id/wheel_image"
       android:layout_width="280dip"
       android:layout_height="280dip"
-      app:wheelCursorColor="#009688"
+      app:wheelCursorColor="#89ab20"
       app:wheelCursorHeight="19dip"
       app:wheelItemRotateMode="none"
       app:wheelSelectedAngle="270"
 
-      tools:layout_editor_absoluteY="287dp"
-      tools:layout_editor_absoluteX="0dp"
-      tools:ignore="MissingConstraints">
+
+      tools:ignore="MissingConstraints"
+      app:layout_constraintTop_toTopOf="@+id/ToolBar"
+      android:layout_marginTop="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintVertical_bias="0.498"
+      android:layout_marginLeft="8dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:wheelBackgroundColor="#0f0f0f"
+      app:wheelGuideLineColor="#b7be26"
+      android:layout_marginRight="8dp"
+      app:layout_constraintRight_toRightOf="parent">
     <TextView
         android:text="Image Wheel"
         android:id="@id/id_wheel_menu_center_item"
-        android:textColor="#009688"
+        android:textColor="#89ab20"
         style="@style/TextAppearance.AppCompat.Large.Inverse"
         android:gravity="center"
         android:layout_width="wrap_content"
@@ -77,7 +64,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="-58dp">
 
-
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textColor="@android:color/white"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:layout_gravity="center"
+        />
 
     </android.support.v7.widget.Toolbar>
 
