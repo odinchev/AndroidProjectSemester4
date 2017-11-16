@@ -18,6 +18,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -47,6 +51,11 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
         view=(ImageView) findViewById(R.id.imageView);
+        //graph
+
+
+
+
 
         // mqtt
 /*
@@ -54,7 +63,8 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         view=(ImageView) findViewById(R.id.imageView);
         */
 
-
+        final GraphView graphView = (GraphView) findViewById(R.id.graph);
+        final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
         SpinView.setMax(100);
@@ -68,6 +78,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
                     mLivingRoom.setText(humidity);
                     SpinView.setProgress(humiditylevel,true);
                     view.getBackground().setLevel(humiditylevel*100);
+                    graphView.addSeries(series);
                     Notification();
                 }
             }
@@ -146,5 +157,17 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         super.onResume();
         new MqttHumidity(this).execute();
         startService(new Intent(this, Starter.class));
+    }
+
+    private DataPoint[] getDataPoint () {
+        DataPoint[] dp = new DataPoint[]{
+                /*new DataPoint(0, 100),
+                new DataPoint(1, humiditylevel),
+                new DataPoint(2, humiditylevel),
+                new DataPoint(3, humiditylevel),*/
+                new DataPoint(humiditylevel, 1)
+
+        };
+        return (dp);
     }
 }
