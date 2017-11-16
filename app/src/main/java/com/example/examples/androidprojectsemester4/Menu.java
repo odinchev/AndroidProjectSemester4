@@ -61,9 +61,9 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
 */
         lstImage = new ArrayList<>();
 
-        lstImage.add(new ImageData(R.drawable.yayaflame,"test"));
-        lstImage.add(new ImageData(R.drawable.raindropblack,"test"));
+        lstImage.add(new ImageData(R.drawable.black," "));
         lstImage.add(new ImageData(R.drawable.fireflame,"Weather"));
+        lstImage.add(new ImageData(R.drawable.black,"test"));
         lstImage.add(new ImageData(R.drawable.raindrop,"humidity"));
 
 
