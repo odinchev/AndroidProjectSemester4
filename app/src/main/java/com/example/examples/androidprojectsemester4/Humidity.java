@@ -80,7 +80,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
                         .setContentTitle("Humidity")
                         .setContentText("Humidity is " + humiditylevel);
         // Sets an ID for the notification
-        int mNotificationId = 001;
+        int mNotificationId = 002;
         // Gets an instance of the NotificationManager service
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Builds the notification and issues it.
