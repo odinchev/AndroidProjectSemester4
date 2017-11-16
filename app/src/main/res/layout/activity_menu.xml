@@ -26,12 +26,12 @@
       app:layout_constraintVertical_bias="0.498"
       android:layout_marginLeft="8dp"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:wheelBackgroundColor="#0f0f0f"
+      app:wheelBackgroundColor="#181818"
       app:wheelGuideLineColor="#b7be26"
       android:layout_marginRight="8dp"
       app:layout_constraintRight_toRightOf="parent">
     <TextView
-        android:text="Image Wheel"
+        android:text="Select App"
         android:id="@id/id_wheel_menu_center_item"
         android:textColor="#89ab20"
         style="@style/TextAppearance.AppCompat.Large.Inverse"
