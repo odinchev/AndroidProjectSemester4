@@ -35,11 +35,13 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 {
     private int humiditylevel;
     private int t;
+    private int j =5;
     private TextView mLivingRoom;
     private ProgressBar SpinView;
     private ImageView view;
     private Handler mHandler;
     private int level;
+
 
 
     @Override
@@ -88,10 +90,15 @@ public class Humidity extends AppCompatActivity implements MqttCallback
                     series.appendData(new DataPoint(t, humiditylevel), true, 1000);
                     graphView.addSeries(series);
                     Notification();
-                    if(t==5)
+                    if(t==j)
                     {
-                        t=0;
+
+
                         graphView.removeAllSeries();
+
+
+                        j+=5;
+
                         //series.resetData();
                     }
                 }
