@@ -37,7 +37,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
     private ImageView view;
     private Handler mHandler;
     private int level;
-
+//Test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,8 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 
         final GraphView graphView = (GraphView) findViewById(R.id.graph);
         final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
+        //
+
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
         SpinView.setMax(100);
@@ -158,6 +160,8 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         new MqttHumidity(this).execute();
         startService(new Intent(this, Starter.class));
     }
+
+
 
     private DataPoint[] getDataPoint () {
         DataPoint[] dp = new DataPoint[]{
