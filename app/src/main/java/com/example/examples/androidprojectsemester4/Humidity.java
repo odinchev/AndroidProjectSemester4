@@ -32,6 +32,7 @@ import mqtt.MqttReceiver;
 public class Humidity extends AppCompatActivity implements MqttCallback
 {
     private int humiditylevel;
+    private int t;
     private TextView mLivingRoom;
     private ProgressBar SpinView;
     private ImageView view;
@@ -65,6 +66,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 
         final GraphView graphView = (GraphView) findViewById(R.id.graph);
         final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
+
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
         SpinView.setMax(100);
@@ -78,7 +80,11 @@ public class Humidity extends AppCompatActivity implements MqttCallback
                     mLivingRoom.setText(humidity);
                     SpinView.setProgress(humiditylevel,true);
                     view.getBackground().setLevel(humiditylevel*100);
-                    graphView.addSeries(series);
+
+
+                    t++;
+                    series.appendData(new DataPoint(t, humiditylevel), true, 1000);
+
                     Notification();
                 }
             }
@@ -157,15 +163,14 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         super.onResume();
         new MqttHumidity(this).execute();
         startService(new Intent(this, Starter.class));
+
     }
 
     private DataPoint[] getDataPoint () {
         DataPoint[] dp = new DataPoint[]{
-                /*new DataPoint(0, 100),
-                new DataPoint(1, humiditylevel),
-                new DataPoint(2, humiditylevel),
-                new DataPoint(3, humiditylevel),*/
-                new DataPoint(humiditylevel, 1)
+
+                new DataPoint(t,humiditylevel)
+
 
         };
         return (dp);
