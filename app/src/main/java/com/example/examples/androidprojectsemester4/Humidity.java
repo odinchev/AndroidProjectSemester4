@@ -29,6 +29,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import mqtt.MqttHumidity;
 import mqtt.MqttReceiver;
 
+import static com.example.examples.androidprojectsemester4.R.id.graph;
+
 public class Humidity extends AppCompatActivity implements MqttCallback
 {
     private int humiditylevel;
@@ -54,7 +56,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         view=(ImageView) findViewById(R.id.imageView);
         //graph
 
-
+     final   GraphView graphView = (GraphView) findViewById(graph);
 
 
 
@@ -64,7 +66,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
         view=(ImageView) findViewById(R.id.imageView);
         */
 
-        final GraphView graphView = (GraphView) findViewById(R.id.graph);
+
         final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
 
         mLivingRoom = (TextView) findViewById(R.id.living_room);
@@ -84,7 +86,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 
                     t++;
                     series.appendData(new DataPoint(t, humiditylevel), true, 1000);
-
+graphView.addSeries(series);
                     Notification();
                 }
             }
