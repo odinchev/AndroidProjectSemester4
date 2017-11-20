@@ -18,6 +18,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -27,6 +31,8 @@ import java.util.List;
 
 import github.hellocsl.cursorwheel.CursorWheelLayout;
 import mqtt.MqttReceiver;
+
+import static com.example.examples.androidprojectsemester4.R.id.graph;
 
 public class MainActivity extends AppCompatActivity implements MqttCallback
 {
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
     int graphTemperature;
     private NotificationCompat.Builder notificationBuilder;
 
+private int t;
 
 
 
@@ -63,8 +70,10 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
 //wheel
 
 
+        //graph
+        final GraphView graphView = (GraphView) findViewById(graph);
 
-        //wheel
+        final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
 
 
 
@@ -85,6 +94,11 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
                     mLivingRoom.setText(temperature);
                     SpinView.setProgress(graphTemperature,true);
                     view.getBackground().setLevel(graphTemperature*100);
+
+                    t++;
+                    series.appendData(new DataPoint(t, graphTemperature), true, 1000);
+                    graphView.addSeries(series);
+
                     Notification();
                 }
             }
@@ -176,7 +190,15 @@ public class MainActivity extends AppCompatActivity implements MqttCallback
 
     }
 
+    private DataPoint[] getDataPoint () {
+        DataPoint[] dp = new DataPoint[]{
 
+                new DataPoint(t,graphTemperature)
+
+
+        };
+        return (dp);
+    }
 
 }
 
