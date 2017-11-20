@@ -130,7 +130,7 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
             */
 
         if(parent.getId() == R.id.wheel_image) {
-            Toast.makeText(getBaseContext(), "Selected:" + lstImage.get(pos).imageDescription, Toast.LENGTH_SHORT).show();
+
 
             if(lstImage.get(pos).imageDescription.equals("Weather"))
             {
@@ -141,6 +141,7 @@ public class Menu extends AppCompatActivity implements  CursorWheelLayout.OnMenu
                 //Toast.makeText(getBaseContext(), "WEATHER:" + lstImage.get(pos).imageDescription, Toast.LENGTH_SHORT).show();
 
             }
+            //
             if(lstImage.get(pos).imageDescription.equals("humidity"))
             {
 
