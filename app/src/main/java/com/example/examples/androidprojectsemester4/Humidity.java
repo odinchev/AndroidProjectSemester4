@@ -88,7 +88,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
                     Notification();
                 }
             }
-        };
+        };//
     }
     public void Notification() {
         NotificationCompat.Builder mBuilder =
