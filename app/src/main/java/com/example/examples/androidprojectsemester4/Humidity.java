@@ -86,8 +86,14 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 
                     t++;
                     series.appendData(new DataPoint(t, humiditylevel), true, 1000);
-graphView.addSeries(series);
+                    graphView.addSeries(series);
                     Notification();
+                    if(t==5)
+                    {
+                        t=0;
+                        graphView.removeAllSeries();
+                        //series.resetData();
+                    }
                 }
             }
         };//
