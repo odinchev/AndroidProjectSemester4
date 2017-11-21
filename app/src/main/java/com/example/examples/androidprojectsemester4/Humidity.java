@@ -2,6 +2,7 @@ package com.example.examples.androidprojectsemester4;
 
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.media.Image;
 import android.os.Handler;
 import android.os.Looper;
@@ -35,7 +36,7 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 {
     private int humiditylevel;
     private int t;
-    private int j =5;
+
     private TextView mLivingRoom;
     private ProgressBar SpinView;
     private ImageView view;
@@ -61,7 +62,6 @@ public class Humidity extends AppCompatActivity implements MqttCallback
      final   GraphView graphView = (GraphView) findViewById(graph);
 
 
-
         // mqtt
 /*
 
@@ -70,7 +70,11 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 
 
         final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
-
+        series.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright));
+        series.setDrawBackground(true);
+       // series.setColor(R.color.colorPrimaryDark);
+        //series.setBackgroundColor(R.color.blue);
+        //series.setBackgroundColor(R.style.AppTheme_Humidity );
         mLivingRoom = (TextView) findViewById(R.id.living_room);
         SpinView=(ProgressBar)findViewById(R.id.progressBar);
         SpinView.setMax(100);
@@ -87,20 +91,10 @@ public class Humidity extends AppCompatActivity implements MqttCallback
 
 
                     t++;
-                    series.appendData(new DataPoint(t, humiditylevel), true, 1000);
+                    series.appendData(new DataPoint(t, humiditylevel), true, 5);
                     graphView.addSeries(series);
                     Notification();
-                    if(t==j)
-                    {
 
-
-                        graphView.removeAllSeries();
-
-
-                        j+=5;
-
-                        //series.resetData();
-                    }
                 }
             }
         };//

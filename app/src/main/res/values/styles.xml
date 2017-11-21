@@ -1,6 +1,7 @@
 <resources>
     <color name="picton_blue">#33B5E5</color>
     <color name="white">#918d8d</color>
+
     <style name="AppTheme"
 
         parent="Theme.AppCompat.Light.NoActionBar">
@@ -16,4 +17,5 @@
     <style name="AppTheme.Temperature">
         <item name="colorAccent">#f22505</item> <!-- Whatever color you want-->
     </style>
+
 </resources>

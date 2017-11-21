@@ -74,7 +74,8 @@ private int t;
         final GraphView graphView = (GraphView) findViewById(graph);
 
         final LineGraphSeries<DataPoint> series = new LineGraphSeries<>(getDataPoint());
-
+        series.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
+        series.setDrawBackground(true);
 
 
         // mqtt
@@ -96,7 +97,7 @@ private int t;
                     view.getBackground().setLevel(graphTemperature*100);
 
                     t++;
-                    series.appendData(new DataPoint(t, graphTemperature), true, 1000);
+                    series.appendData(new DataPoint(t, graphTemperature), true, 5);
                     graphView.addSeries(series);
 
                     Notification();
